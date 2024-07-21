@@ -27,7 +27,6 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('content'); ?>
-
 <!-- Page header -->
 <div class="page-header d-print-none">
     <div class="container-xl">
@@ -217,7 +216,6 @@
         </div>
     </div>
 </div>
-
 <?= $this->endSection(); ?>
 
 <?= $this->section('javascript'); ?>
