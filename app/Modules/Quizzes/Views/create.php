@@ -35,6 +35,11 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="mb-3">
+                            <label class="form-label">Image <small class="text-muted">(optional)</small></label>
+                            <input type="file" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
                             <label class="form-label">Question</label>
                             <textarea class="form-control" name="example-textarea" placeholder="Input your question here"></textarea>
                         </div>
