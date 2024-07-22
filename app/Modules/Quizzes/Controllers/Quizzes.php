@@ -28,4 +28,10 @@ class Quizzes extends \App\Controllers\BaseController
         ];
         return view('\App\Modules\Quizzes\Views\create', $data);
     }
+
+    public function quiz()
+    {
+        $data = [];
+        return view('\App\Modules\Quizzes\Views\quiz', $data);
+    }
 }
