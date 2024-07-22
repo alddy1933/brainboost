@@ -71,7 +71,7 @@
                                     <strong>Quiz berakhir dalam 03 hari 02 jam 04 menit 03 detik</strong>
                                 </div>
                                 <div class="mt-3">
-                                    <a href="https://tabler-icons.io" class="btn btn-primary" target="_blank" rel="noopener">Kerjakan Quiz</a>
+                                    <a href="<?= base_url("quizzes") ?>" class="btn btn-primary">Kerjakan Quiz</a>
                                 </div>
                             </div>
                         </div>
