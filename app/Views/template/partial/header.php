@@ -8,6 +8,8 @@
 <link href="<?= base_url(); ?>assets/tabler-template/dist/css/tabler-payments.min.css?1668287865" rel="stylesheet" />
 <link href="<?= base_url(); ?>assets/tabler-template/dist/css/tabler-vendors.min.css?1668287865" rel="stylesheet" />
 <link href="<?= base_url(); ?>assets/tabler-template/dist/css/demo.min.css?1668287865" rel="stylesheet" />
+
+<link rel="icon" type="image/x-icon" href="<?= base_url(); ?>assets/img/logo/brainboost-logo-mini.png">
 <style>
     @import url('https://rsms.me/inter/inter.css');
 
