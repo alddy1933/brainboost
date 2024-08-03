@@ -36,4 +36,21 @@ class Events_model extends Model
         return $this->db
             ->insert($data);
     }
+
+    public function updateData($data, $id)
+    {
+        if ($data['publish'] == 'Y') {
+            $this->db->update([
+                'publish' => 'N'
+            ]);
+        }
+
+        return $this->db
+            ->update($data, ['events_id' => $id]);
+    }
+
+    public function getEventById($id)
+    {
+        return $this->db->where('events_id', $id)->get()->getRow() ?? '';
+    }
 }

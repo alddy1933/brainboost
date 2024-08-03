@@ -14,7 +14,7 @@
                     Overview
                 </div>
                 <h2 class="page-title">
-                    Create Events
+                    <?= isset($row) ? 'Edit' : 'Create' ?> Events
                 </h2>
             </div>
         </div>
@@ -29,24 +29,25 @@
                 <div class="card">
                     <div class="card-body">
                         <form action="<?= base_url('events/store') ?>" method="post">
+                            <input type="hidden" name="id" value="<?= $row->events_id ?? '' ?>">
                             <div class="mb-3">
                                 <label class="form-label">Event Name</label>
-                                <input type="text" class="form-control" name="event_name" required />
+                                <input type="text" class="form-control" name="event_name" value="<?= $row->events_name ?? '' ?>" required />
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Points Up</label>
-                                <input type="number" class="form-control" name="points_up" required />
+                                <input type="number" class="form-control" name="points_up" value="<?= $row->points_up ?? '' ?>" required />
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Expired At</label>
-                                <input type="datetime-local" class="form-control" name="expired_at" required />
+                                <input type="datetime-local" class="form-control" name="expired_at" value="<?= $row->expired_at ?? '' ?>" required />
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Publish</label>
-                                <input class="form-check-input m-0" name="publish" type="checkbox" value="Y" />
+                                <input class="form-check-input m-0" name="publish" type="checkbox" value="Y" <?= ($row->publish ?? '') == 'Y' ? 'checked' : '' ?> />
                             </div>
                             <div class="w-100 d-flex justify-content-center gap-2 mt-4">
-                                <button type="submit" class="btn btn-primary">Create</button>
+                                <button type="submit" class="btn btn-primary"><?= isset($row) ? 'Edit' : 'Create' ?></button>
                                 <a href="<?= base_url('events') ?>" class="btn btn-danger">Back</a>
                             </div>
                         </form>
