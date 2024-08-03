@@ -113,7 +113,7 @@
 
         if (questionIndex >= questions.length) {
             // Jika semua pertanyaan sudah dijawab
-            $("#question-body").html('<h3 class="mb-3">All questions have been answered.</h3>');
+            $("#question-body").html('<h3 class="mb-3">No more questions</h3>');
             return;
         }
 

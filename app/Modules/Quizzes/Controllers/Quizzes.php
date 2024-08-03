@@ -100,6 +100,7 @@ class Quizzes extends \App\Controllers\BaseController
             if ($data != '') {
                 foreach ($data as $row) {
                     $points += $this->model->getPoint((object)$row);
+                    $this->model->insertTakenQuestion((object)$row);
                 }
             }
 

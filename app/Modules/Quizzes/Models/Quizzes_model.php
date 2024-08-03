@@ -43,6 +43,14 @@ class Quizzes_model extends Model
             ]);
     }
 
+    public function insertTakenQuestion($data)
+    {
+        db_connect()->table('question_taken')->insert([
+            'user_id' => session()->get('user_id'),
+            'question_id' => $data->question_id,
+        ]);
+    }
+
     private function _getCategoryId($category)
     {
         return db_connect()->table('category')
