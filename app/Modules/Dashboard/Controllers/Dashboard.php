@@ -6,6 +6,8 @@ class Dashboard extends \App\Controllers\BaseController
 {
     public function __construct()
     {
+        helper(['auth']);
+        checkAuth();
     }
 
     public function index()

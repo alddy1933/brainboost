@@ -81,7 +81,7 @@
             <div class="col-md-12 col-lg-8">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title d-flex alig-items-center gap-2">
+                        <h3 class="card-title d-flex align-items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-crown">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                 <path d="M12 6l4 6l5 -4l-2 10h-14l-2 -10l5 4z" />
@@ -175,7 +175,7 @@
                         </h3>
                     </div>
                     <div class="card-body">
-                        <div class="row">
+                        <div class="row mt-3">
                             <div class="col-6">
                                 <div class="d-flex flex-column justify-content-center align-items-center">
                                     <h2>#2</h2>
