@@ -96,66 +96,31 @@
                             <thead>
                                 <tr>
                                     <th>Rank</th>
-                                    <th>Username</th>
+                                    <th>Full Name</th>
                                     <th>Quiz Finished</th>
-                                    <th>Question Finished</th>
-                                    <th>Rate</th>
+                                    <th>Points</th>
                                 </tr>
                             </thead>
-                            <tr>
-                                <td>
-                                    <div class="leaderboard-rank rank-1">#1</div>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <span class="avatar avatar-sm" style="background-image: url(<?= base_url();  ?>assets/tabler-template/static/avatars/000m.jpg)"></span>
-                                        <span>Tessia Eralith <span class="flag flag-country-us"></span></span>
-                                    </div>
-                                </td>
-                                <td class="text-muted">121</td>
-                                <td class="text-muted">1.222</td>
-                                <td class="text-muted">76.29%</td>
-                            </tr>
-                            <tr class="table-primary">
-                                <td>
-                                    <div class="leaderboard-rank rank-2">#2</div>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <span class="avatar avatar-sm" style="background-image: url(<?= base_url();  ?>assets/tabler-template/static/avatars/000m.jpg)"></span>
-                                        <strong>Arthur Leywin (You) <span class="flag flag-country-id"></span></strong>
-                                    </div>
-                                </td>
-                                <td><strong>121</strong></td>
-                                <td><strong>1.222</strong></td>
-                                <td><strong>76.29%</strong></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="leaderboard-rank rank-3">#3</div>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <span class="avatar avatar-sm" style="background-image: url(<?= base_url();  ?>assets/tabler-template/static/avatars/000m.jpg)"></span>
-                                        <span>Lukas Wykes <span class="flag flag-country-pl"></span></span>
-                                    </div>
-                                </td>
-                                <td class="text-muted">121</td>
-                                <td class="text-muted">1.222</td>
-                                <td class="text-muted">76.29%</td>
-                            </tr>
-                            <tr>
-                                <td>#4</td>
-                                <td>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <span class="avatar avatar-sm" style="background-image: url(<?= base_url();  ?>assets/tabler-template/static/avatars/000m.jpg)"></span>
-                                        <span>Kim Dokja <span class="flag flag-country-de"></span></span>
-                                    </div>
-                                </td>
-                                <td class="text-muted">121</td>
-                                <td class="text-muted">1.222</td>
-                                <td class="text-muted">76.29%</td>
-                            </tr>
+                            <tbody>
+                                <?php
+                                foreach ($leaderboard as $index => $lb) {
+                                    $rank = $index + 1;
+                                ?>
+                                    <tr class="<?= $lb->full_name == session()->get('full_name') ? 'table-primary' : '' ?>">
+                                        <td>
+                                            <div class="leaderboard-rank rank-<?= $rank; ?>">#<?= $rank; ?></div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="avatar avatar-sm" style="background-image: url(<?= base_url();  ?>assets/tabler-template/static/avatars/000m.jpg)"></span>
+                                                <span><?= $lb->full_name; ?> <?= $lb->full_name == session()->get('full_name') ? '(You)' : '' ?></span>
+                                            </div>
+                                        </td>
+                                        <td class="text-muted"><?= $lb->quiz_finished ?></td>
+                                        <td class="text-muted"><?= $lb->total ?></td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -177,7 +142,7 @@
                         </h3>
                     </div>
                     <div class="card-body">
-                        <div class="row mt-3">
+                        <div class="row mt-3 mb-4">
                             <div class="col-6">
                                 <div class="d-flex flex-column justify-content-center align-items-center">
                                     <h2>#2</h2>
