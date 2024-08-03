@@ -26,5 +26,5 @@ class Dashboard extends \App\Controllers\BaseController
             'leaderboard' => $this->model->getLeaderboard()
         ];
         return view('\App\Modules\Dashboard\Views\index', $data);
-    }
+    }   
 }

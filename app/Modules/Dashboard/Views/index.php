@@ -111,7 +111,7 @@
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center gap-2">
-                                                <span class="avatar avatar-sm" style="background-image: url(<?= base_url();  ?>assets/tabler-template/static/avatars/000m.jpg)"></span>
+                                                <span class="avatar avatar-sm" style="background-image: url(<?= base_url();  ?>img/avatar/<?= $lb->img  ?>)"></span>
                                                 <span><?= $lb->full_name; ?> <?= $lb->full_name == session()->get('full_name') ? '(You)' : '' ?></span>
                                             </div>
                                         </td>

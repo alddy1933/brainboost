@@ -10,6 +10,7 @@ class Dashboard_model extends Model
     {
         $query = "SELECT 
                     b.full_name,
+                    b.img,
                     SUM(score) AS total,
                     COUNT(*) AS quiz_finished
                     FROM 
