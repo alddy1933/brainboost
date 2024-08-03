@@ -77,13 +77,15 @@
                     let {
                         question_id,
                         answer_id,
-                        answer_option
+                        answer_option,
+                        img
                     } = curr;
 
                     if (!acc[question_id]) {
                         acc[question_id] = {
                             question_id: question_id,
                             question: curr.question,
+                            img: img,
                             answer_options: []
                         };
                     }
@@ -100,9 +102,9 @@
 
                 localStorage.setItem('questions', JSON.stringify(formattedQuestions));
 
-                getQuestion()
+                getQuestion();
             }
-        })
+        });
     }
 
     function getQuestion() {
@@ -118,6 +120,14 @@
         let question = questions[questionIndex];
 
         let html = ``;
+
+        if (question.img != null) {
+            html += `
+                <div class="w-100 d-flex justify-content-center mb-3">
+                    <img src="<?= base_url('image_questions') ?>/${question.img}" class="img-fluid" style="max-height:200px">
+                </div>
+            `;
+        }
 
         html += `<h3 class="mb-3">${question.question}</h3>`;
 

@@ -47,6 +47,8 @@ class Quizzes extends \App\Controllers\BaseController
     public function store()
     {
         try {
+            $image = $this->request->getFile('image');
+
             $categoryId = $this->request->getPost('category');
             $userId = session()->get('user_id');
             $content = $this->request->getPost('question');
@@ -56,6 +58,15 @@ class Quizzes extends \App\Controllers\BaseController
                 'user_id' => $userId,
                 'content' => $content
             ];
+
+            if ($image != '') {
+                if (!is_dir("image_questions/")) {
+                    mkdir("image_questions/", 0777, true);
+                }
+                $randomName = $image->getRandomName();
+                $image->move("image_questions/", $randomName);
+                $questionData['img'] = $randomName;
+            }
 
             $lastInsertId = $this->model->insertQuestion($questionData);
 

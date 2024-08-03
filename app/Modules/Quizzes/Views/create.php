@@ -28,7 +28,7 @@
 </div>
 
 <!-- Page body -->
-<form action="<?= base_url('quizzes/create') ?>" method="post">
+<form action="<?= base_url('quizzes/create') ?>" method="post" enctype="multipart/form-data">
     <div class="page-body">
         <div class="container-xl">
             <div class="row row-deck row-cards">
@@ -37,7 +37,7 @@
                         <div class="card-body">
                             <div class="mb-3">
                                 <label class="form-label">Image <small class="text-muted">(optional)</small></label>
-                                <input type="file" class="form-control">
+                                <input type="file" class="form-control" name="image">
                             </div>
 
                             <div class="mb-3">
