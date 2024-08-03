@@ -3,6 +3,7 @@
 namespace App\Modules\Quizzes\Controllers;
 
 use App\Modules\Category\Models\Category_model;
+use App\Modules\Events\Models\Events_model;
 use App\Modules\Quizzes\Models\Quizzes_model;
 use Exception;
 
@@ -10,17 +11,20 @@ class Quizzes extends \App\Controllers\BaseController
 {
     private $model;
     private $category;
+    private $event;
 
     public function __construct()
     {
         $this->model = new Quizzes_model();
         $this->category = new Category_model();
+        $this->event = new Events_model();
     }
 
     public function index()
     {
         $data = [
-            "category" => $this->category->getAllCategory()
+            "category" => $this->category->getAllCategory(),
+            'event' => $this->event->getOnGoingEvent()
         ];
         return view('\App\Modules\Quizzes\Views\index', $data);
     }

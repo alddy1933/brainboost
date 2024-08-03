@@ -20,7 +20,7 @@ class Quizzes_model extends Model
 
     public function getPoint($data)
     {
-        $placeholder = 1;
+        $placeholder = $this->_getPointsUp();
 
         $point = db_connect()->table('quiz_answer')
             ->where([
@@ -47,5 +47,15 @@ class Quizzes_model extends Model
     {
         return db_connect()->table('category')
             ->where('slug', $category)->get()->getRow()->category_id ?? '';
+    }
+
+    private function _getPointsUp()
+    {
+        return db_connect()->table('events')
+            ->where([
+                'publish' => 'Y'
+            ])
+            ->get()->getRow()
+            ->points_up ?? 1;
     }
 }

@@ -22,9 +22,9 @@ class Auth extends \App\Controllers\BaseController
     public function signUp()
     {
         $data = [];
-        return view('\App\Modules\Auth\Views\signup',$data);
+        return view('\App\Modules\Auth\Views\signup', $data);
     }
-    
+
     public function signUpPost()
     {
 
@@ -32,18 +32,17 @@ class Auth extends \App\Controllers\BaseController
             "username" => $this->request->getVar('username'),
             "full_name" => $this->request->getVar('name'),
             "email" => $this->request->getVar('email'),
-            "password" => password_hash($this->request->getVar('password'),PASSWORD_BCRYPT),
+            "password" => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
         ];
 
         $queryStatus = $this->model->insertRegisterUser($data);
-        if($queryStatus["ok"]){
+        if ($queryStatus["ok"]) {
             $url = base_url('auth/');
             session()->setFlashdata('success_alert', 'Berhasl mendaftar!');
-        }
-        else{
+        } else {
             $url = base_url('auth/sign_up');
             $msg = "Terjadi kesalahan. Tidak dapat mendaftar";
-            if($queryStatus["err"]["code"] == 1062){ //error duplicate entry
+            if ($queryStatus["err"]["code"] == 1062) { //error duplicate entry
                 $msg = "Username telah terpakai";
             }
             session()->setFlashdata('error_alert', $msg);
