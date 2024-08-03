@@ -129,3 +129,5 @@ nb-configuration.xml
 # added by human
 brainboost.erd.json
 bbdb.sql
+public/img/avatar/*
+!public/img/avatar/default_profile.svg

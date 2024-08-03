@@ -5,7 +5,13 @@ namespace App\Modules\Profile\Models;
 use CodeIgniter\Model;
 
 class Profile_model extends Model
-{
+{   
+    private $userTable = "bb_user";
+    protected $status = [
+        'ok' => true,
+        'err' => null,
+    ];
+
     public function getBiodata($username)
     {
         return db_connect()->table('bb_user')->where('username', $username)->get()->getRow();
@@ -19,5 +25,31 @@ class Profile_model extends Model
             ->orderBy('a.quiz_taken_id', 'DESC')
             ->get()
             ->getResult();
+    }
+
+    public function updateImage($data)
+    {
+        $builder = $this->db->table($this->userTable);
+        $q = $builder->where('username',$data['username'])->set('img',$data['img_name'])->update();
+        if(!$q){
+            $this->status = [
+                'ok' => false,
+                'err' => $this->db->error(),
+            ];
+        }
+        return $this->status;
+    }
+
+    public function updateIdentity($data,$where)
+    {
+        $builder = $this->db->table($this->userTable);
+        $q = $builder->where('username',$where)->set($data)->update();
+        if(!$q){
+            $this->status = [
+                'ok' => false,
+                'err' => $this->db->error(),
+            ];
+        }
+        return $this->status;
     }
 }

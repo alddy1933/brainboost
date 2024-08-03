@@ -45,56 +45,44 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="d-flex flex-column col-xs-6 justify-content-center align-items-center gap-2 mb-4">
-                                    <span class="avatar avatar-xl" style="background-image: url(<?= base_url();  ?>img/avatar/arthur-leywin.jpeg)"></span>
+                                    <span class="avatar avatar-xl">
+                                        <img id="imgProfile" class="card-img-top" src="<?= base_url();  ?>img/avatar/<?= $biodata->img ?>" alt="Card image cap" style="object-filt: cover">
+                                    </span>
                                     <input type="file" required class="form-control" id="image" name="files"/>
                                     <button class="btn btn-sm btn-primary" id="imgEdit">Change Picture Profile</button>
                                     <div id="imgInfo" class="pt-1" style="display: hidden"></div>
                                 </div>
 
+                                <hr>
+
                                 <div class="mb-3">
                                     <label class="form-label">Username</label>
-                                    <input type="text" class="form-control" readonly name="example-text-input" value="<?= $biodata->full_name ?>" />
+                                    <input type="text" id="username-p" class="form-control" readonly name="example-text-input" value="<?= $biodata->username ?>" />
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" id="fullName-p" class="form-control" name="example-text-input" value="<?= $biodata->full_name ?>" />
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" id="email-p" value="<?= $biodata->birth ?>" class="form-control" name="example-text-input" value="<?= $biodata->email ?>" />
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label">Birthday</label>
-                                    <input type="date" class="form-control" name="example-text-input" value="<?= $biodata->birth ?>" />
+                                    <input type="date" id="ttl-p" class="form-control" name="example-text-input" value="<?= $biodata->birth ?>" />
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label">Gender</label>
-                                    <div class="form-selectgroup">
-                                        <label class="form-selectgroup-item">
-                                            <input type="radio" name="icons" value="home" class="form-selectgroup-input" <?= $biodata->gender == "Laki-Laki" ? "checked" : "" ?> />
-                                            <span class="form-selectgroup-label">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-man me-1">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M10 16v5" />
-                                                    <path d="M14 16v5" />
-                                                    <path d="M9 9h6l-1 7h-4z" />
-                                                    <path d="M5 11c1.333 -1.333 2.667 -2 4 -2" />
-                                                    <path d="M19 11c-1.333 -1.333 -2.667 -2 -4 -2" />
-                                                    <path d="M12 4m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                                </svg>
-                                                Man</span>
-                                        </label>
-                                        <label class="form-selectgroup-item">
-                                            <input type="radio" name="icons" value="user" class="form-selectgroup-input" <?= $biodata->gender == "Perempuan" ? "checked" : "" ?> />
-                                            <span class="form-selectgroup-label">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-woman me-1">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M10 16v5" />
-                                                    <path d="M14 16v5" />
-                                                    <path d="M8 16h8l-2 -7h-4z" />
-                                                    <path d="M5 11c1.667 -1.333 3.333 -2 5 -2" />
-                                                    <path d="M19 11c-1.667 -1.333 -3.333 -2 -5 -2" />
-                                                    <path d="M12 4m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                                </svg>
-                                                Woman
-                                            </span>
-                                        </label>
-                                    </div>
+                                    <input type="radio" class="jk" name="jk" <?php echo ($biodata->gender == "Laki-laki")?  "checked" : ""; ?> value="Laki-laki" > Laki-Laki
+						            <input type="radio" class="jk" name="jk" <?php echo ($biodata->gender == "Perempuan")?  "checked" : ""; ?> value="Perempuan"> Perempuan<br>
                                 </div>
+                                
+                                <div id="editIdentity_info" class="mb-2"></div>
+				                <button id="editIdentity" class="btn btn-primary">Simpan Perubahan</button>
                             </div>
                         </div>
                     </div>
@@ -241,7 +229,8 @@
 					if (!jsonData.err) {
 						textInfo = "<badge class=' "+jsonData.typeInfo+" '>"+jsonData.info+"</badge>";
 						let imgProfile = document.getElementById('imgProfile')
-						let imgNavbar = document.getElementById('img_navbar')
+						let imgNavbar = document.getElementById('imgNavbar')
+                        // console.log(jsonData)
 						imgProfile.setAttribute('src',jsonData.imgData);
 						imgNavbar.setAttribute('src',jsonData.imgData);
 					}
@@ -252,11 +241,32 @@
 					info.innerHTML = textInfo;
 					$('#imgInfo').fadeIn().delay(3000).fadeOut();
 
-					//console.log(jsonData);
+					console.log(jsonData);
 				}
 
 			});
     });
+
+
+//-------------------------------------------
+$('#editIdentity').click(function(){
+    $.post("<?= base_url('profile/editIdentity') ?>",{
+        full_name: $("#fullName-p").val(),
+        email: $("#email-p").val(),
+        birth: $("#ttl-p").val(),
+        gender : $('.jk:checked').val(),
+    },function(data){
+        jsonData = JSON.parse(data);
+        if('err' in jsonData){
+            $("#editIdentity_info").html(jsonData['etc']).hide()
+            $("#editIdentity_info").fadeIn().delay(3000).fadeOut(300)
+        } else{
+            
+            $("#editIdentity_info").html(jsonData['edit_success']).hide()
+            $("#editIdentity_info").fadeIn().delay(3000).fadeOut(300)
+        }
+    });
+});
 </script>
 <?= $this->endSection(); ?>
 

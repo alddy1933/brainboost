@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Modules\Dashboard\Controllers;
+use App\Modules\Profile\Models\Profile_model;
 
 use App\Modules\Events\Models\Events_model;
 
