@@ -50,22 +50,6 @@
     </div>
 
     <?= $this->include('\App\Views\template\partial\js') ?>
-    <script>
-        $(function() {
-
-            <?php if (session()->has('error_alert')) { ?>
-                Swal.fire({
-                    text: "<?= session()->getFlashdata('error_alert') ?>",
-                    icon: "error",
-                    buttonsStyling: false,
-                    confirmButtonText: "Kembali",
-                    customClass: {
-                        confirmButton: "btn btn-danger"
-                    }
-                })
-            <?php } ?>
-        });
-    </script>
 </body>
 
 </html>

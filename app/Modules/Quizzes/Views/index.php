@@ -92,7 +92,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="font-weight-medium">
-                                                <?= $ct->name ?>
+                                                <?= $ct->category_name ?>
                                             </div>
                                         </div>
                                     </div>

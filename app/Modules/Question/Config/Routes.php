@@ -1,5 +1,5 @@
 <?php
 
 $routes->group('/question', function ($routes) {
-    $routes->post('generate', '\App\Modules\Question\Controllers\Question::generateNewQuestion');
+    $routes->post('generate/(:any)', '\App\Modules\Question\Controllers\Question::generateQuestions/$1');
 });

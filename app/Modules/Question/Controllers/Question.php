@@ -13,9 +13,9 @@ class Question extends \App\Controllers\BaseController
         $this->question = new Question_model();
     }
 
-    public function generateNewQuestion()
+    public function generateQuestions($category)
     {
-        $question = $this->question->getNewQuestion();
+        $question = $this->question->getQuestions($category);
         return json_encode($question);
     }
 }
