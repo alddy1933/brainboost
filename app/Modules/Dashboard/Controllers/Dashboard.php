@@ -23,7 +23,9 @@ class Dashboard extends \App\Controllers\BaseController
     {
         $data = [
             'event' => $this->event->getOnGoingEvent(),
-            'leaderboard' => $this->model->getLeaderboard()
+            'leaderboard' => $this->model->getLeaderboard(),
+            'stats' => $this->model->getStats(session()->get('user_id')),
+
         ];
         return view('\App\Modules\Dashboard\Views\index', $data);
     }   

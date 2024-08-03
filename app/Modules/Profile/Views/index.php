@@ -88,7 +88,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 col-lg-8">
+            <div class="col-md-12 col-lg-12">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title d-flex align-items-center gap-2">
@@ -133,7 +133,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 col-lg-4">
+            <!-- <div class="col-md-12 col-lg-4">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title d-flex align-items-center gap-2">
@@ -187,8 +187,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3">
+            </div> -->
+            <!-- <div class="col-md-12 col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
@@ -202,7 +202,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

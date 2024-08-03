@@ -103,11 +103,10 @@
                             <tbody>
                                 <?php
                                 foreach ($leaderboard as $index => $lb) {
-                                    $rank = $index + 1;
                                 ?>
                                     <tr class="<?= $lb->full_name == session()->get('full_name') ? 'table-primary' : '' ?>">
                                         <td>
-                                            <div class="leaderboard-rank rank-<?= $rank; ?>">#<?= $rank; ?></div>
+                                            <div class="leaderboard-rank rank-<?= $lb->rank; ?>">#<?= $lb->rank; ?></div>
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center gap-2">
@@ -142,39 +141,41 @@
                     </div>
                     <div class="card-body">
                         <div class="row mt-3 mb-4">
-                            <div class="col-6">
+                            <div class="col-2"></div>
+                            <div class="col-8">
                                 <div class="d-flex flex-column justify-content-center align-items-center">
-                                    <h2>#2</h2>
+                                    <h1><sup>#</sup><span style="font-size:50px;">2</span></h2>
                                     <span>Current Rank</span>
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <!-- <div class="col-6">
                                 <div class="d-flex flex-column justify-content-center align-items-center">
                                     <h2>#1</h2>
                                     <span>Best Rank</span>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-12">
                                 <hr>
                             </div>
+                            <div class="col-2"></div>
                             <div class="col-4">
                                 <div class="d-flex flex-column justify-content-center align-items-center">
-                                    <h3>99</h3>
+                                    <h1><?= $stats['quiz_taken'] ?></h1>
                                     <small class="text-center">Quiz Finished</small>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="d-flex flex-column justify-content-center align-items-center">
-                                    <h3>1.008</h3>
+                                    <h1><?= $stats['question_taken'] ?></h1>
                                     <small class="text-center">Question Finished</small>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <!-- <div class="col-4">
                                 <div class="d-flex flex-column justify-content-center align-items-center">
                                     <h3>78%</h3>
                                     <small class="text-center">Rate</small>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
