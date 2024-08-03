@@ -19,6 +19,38 @@ class Auth extends \App\Controllers\BaseController
         return view('\App\Modules\Auth\Views\index', $data);
     }
 
+    public function signUp()
+    {
+        $data = [];
+        return view('\App\Modules\Auth\Views\signup',$data);
+    }
+    
+    public function signUpPost()
+    {
+
+        $data = [
+            "username" => $this->request->getVar('username'),
+            "full_name" => $this->request->getVar('name'),
+            "email" => $this->request->getVar('email'),
+            "password" => password_hash($this->request->getVar('password'),PASSWORD_BCRYPT),
+        ];
+
+        $queryStatus = $this->model->insertRegisterUser($data);
+        if($queryStatus["ok"]){
+            $url = base_url('auth/');
+            session()->setFlashdata('success_alert', 'Berhasl mendaftar!');
+        }
+        else{
+            $url = base_url('auth/sign_up');
+            $msg = "Terjadi kesalahan. Tidak dapat mendaftar";
+            if($queryStatus["err"]["code"] == 1062){ //error duplicate entry
+                $msg = "Username telah terpakai";
+            }
+            session()->setFlashdata('error_alert', $msg);
+        }
+        return redirect()->to($url)->withInput();
+    }
+
     public function signInSubmit()
     {
         $username = $this->request->getVar('username');
@@ -32,7 +64,6 @@ class Auth extends \App\Controllers\BaseController
                 return redirect()->to(base_url('dashboard'));
             }
         }
-
         session()->setFlashdata('error_alert', 'Username/password salah');
         return redirect()->to(base_url('auth'))->withInput();
     }

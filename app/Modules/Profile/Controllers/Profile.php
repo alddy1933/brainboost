@@ -16,7 +16,7 @@ class Profile extends \App\Controllers\BaseController
     public function index()
     {
         $data = [
-            'biodata' => $this->model->getBiodata(),
+            'biodata' => $this->model->getBiodata(session()->get('username')),
             'history' => $this->model->getHistory(),
         ];
         return view('\App\Modules\Profile\Views\index', $data);

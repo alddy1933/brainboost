@@ -44,14 +44,16 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="d-flex flex-column justify-content-center align-items-center gap-2 mb-4">
+                                <div class="d-flex flex-column col-xs-6 justify-content-center align-items-center gap-2 mb-4">
                                     <span class="avatar avatar-xl" style="background-image: url(<?= base_url();  ?>img/avatar/arthur-leywin.jpeg)"></span>
-                                    <button class="btn btn-sm btn-primary">Change Picture Profile</button>
+                                    <input type="file" required class="form-control" id="image" name="files"/>
+                                    <button class="btn btn-sm btn-primary" id="imgEdit">Change Picture Profile</button>
+                                    <div id="imgInfo" class="pt-1" style="display: hidden"></div>
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label">Username</label>
-                                    <input type="text" class="form-control" name="example-text-input" value="<?= $biodata->full_name ?>" />
+                                    <input type="text" class="form-control" readonly name="example-text-input" value="<?= $biodata->full_name ?>" />
                                 </div>
 
                                 <div class="mb-3">
@@ -216,6 +218,46 @@
         </div>
     </div>
 </div>
+<script>
+    $("#imgEdit").click(function(){
+        var img_data = $('#image').prop('files')[0]
+    
+        var form_data = new FormData();
+        form_data.append('img',img_data);
+
+        $.ajax({
+				url 		: '<?= base_url('profile/editImage') ?>',
+				cache		: false,
+				contentType	: false,
+				processData	: false,
+				data 		: form_data,
+				type 		: 'POST',
+				success 	: function(data){
+					let jsonData = JSON.parse(data);
+
+					let info = document.getElementById('imgInfo');
+					let textInfo = "";
+
+					if (!jsonData.err) {
+						textInfo = "<badge class=' "+jsonData.typeInfo+" '>"+jsonData.info+"</badge>";
+						let imgProfile = document.getElementById('imgProfile')
+						let imgNavbar = document.getElementById('img_navbar')
+						imgProfile.setAttribute('src',jsonData.imgData);
+						imgNavbar.setAttribute('src',jsonData.imgData);
+					}
+					else{
+						textInfo = "<badge class=' "+jsonData.typeInfo+" '>"+jsonData.err+"</badge>";
+					}
+
+					info.innerHTML = textInfo;
+					$('#imgInfo').fadeIn().delay(3000).fadeOut();
+
+					//console.log(jsonData);
+				}
+
+			});
+    });
+</script>
 <?= $this->endSection(); ?>
 
 <?= $this->section('javascript'); ?>

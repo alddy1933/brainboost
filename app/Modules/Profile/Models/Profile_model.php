@@ -6,9 +6,9 @@ use CodeIgniter\Model;
 
 class Profile_model extends Model
 {
-    public function getBiodata()
+    public function getBiodata($username)
     {
-        return db_connect()->table('bb_user')->where('username', 'arthur_leywin')->get()->getRow();
+        return db_connect()->table('bb_user')->where('username', $username)->get()->getRow();
     }
 
     public function getHistory()
