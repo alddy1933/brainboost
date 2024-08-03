@@ -3,6 +3,7 @@
 namespace App\Modules\Events\Controllers;
 
 use App\Modules\Events\Models\Events_model;
+use App\Modules\Profile\Models\Profile_model;
 
 class Events extends \App\Controllers\BaseController
 {
@@ -11,11 +12,13 @@ class Events extends \App\Controllers\BaseController
     public function __construct()
     {
         $this->model = new Events_model();
+        $this->profile = new Profile_model();
     }
 
     public function index()
     {
         $data = [
+            'biodata' => $this->profile->getBiodata(session()->get('username')),
             'events' => $this->model->getAllEvents()
         ];
         return view('\App\Modules\Events\Views\index', $data);

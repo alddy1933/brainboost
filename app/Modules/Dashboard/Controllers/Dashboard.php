@@ -18,11 +18,13 @@ class Dashboard extends \App\Controllers\BaseController
         checkAuth();
         $this->model = new Dashboard_model();
         $this->event = new Events_model();
+        $this->profile = new Profile_model();
     }
 
     public function index()
     {
         $data = [
+            'biodata' => $this->profile->getBiodata(session()->get('username')),
             'event' => $this->event->getOnGoingEvent(),
             'leaderboard' => $this->model->getLeaderboard()
         ];
