@@ -119,121 +119,26 @@
                                     <th>Date</th>
                                 </tr>
                             </thead>
-                            <tr>
-                                <td class="text-muted">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <span class="text-white avatar" style="background-color: #d6336c">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-monument">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M8 18l2 -13l2 -2l2 2l2 13" />
-                                                    <path d="M5 21v-3h14v3" />
-                                                    <path d="M3 21l18 0" />
-                                                </svg>
-                                            </span>
-                                        </div>
-                                        <div class="col">
-                                            <div class="font-weight-medium">
-                                                History
+                            <?php foreach ($history as $hs) { ?>
+                                <tr>
+                                    <td class="text-muted">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto">
+                                                <span class="text-white avatar" style="background-color: <?= $hs->icon_bg_colour ?>">
+                                                    <?= $hs->icon ?>
+                                                </span>
+                                            </div>
+                                            <div class="col">
+                                                <div class="font-weight-medium">
+                                                    <?= $hs->category_name ?>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td class="text-muted">8</td>
-                                <td class="text-muted">23:59, 28 July 2024</td>
-                            </tr>
-                            <tr>
-                                <td class="text-muted">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <span class="text-white avatar" style="background-color: #d6336c">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-monument">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M8 18l2 -13l2 -2l2 2l2 13" />
-                                                    <path d="M5 21v-3h14v3" />
-                                                    <path d="M3 21l18 0" />
-                                                </svg>
-                                            </span>
-                                        </div>
-                                        <div class="col">
-                                            <div class="font-weight-medium">
-                                                History
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="text-muted">8</td>
-                                <td class="text-muted">23:59, 28 July 2024</td>
-                            </tr>
-                            <tr>
-                                <td class="text-muted">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <span class="text-white avatar" style="background-color: #d6336c">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-monument">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M8 18l2 -13l2 -2l2 2l2 13" />
-                                                    <path d="M5 21v-3h14v3" />
-                                                    <path d="M3 21l18 0" />
-                                                </svg>
-                                            </span>
-                                        </div>
-                                        <div class="col">
-                                            <div class="font-weight-medium">
-                                                History
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="text-muted">8</td>
-                                <td class="text-muted">23:59, 28 July 2024</td>
-                            </tr>
-                            <tr>
-                                <td class="text-muted">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <span class="text-white avatar" style="background-color: #d6336c">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-monument">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M8 18l2 -13l2 -2l2 2l2 13" />
-                                                    <path d="M5 21v-3h14v3" />
-                                                    <path d="M3 21l18 0" />
-                                                </svg>
-                                            </span>
-                                        </div>
-                                        <div class="col">
-                                            <div class="font-weight-medium">
-                                                History
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="text-muted">8</td>
-                                <td class="text-muted">23:59, 28 July 2024</td>
-                            </tr>
-                            <tr>
-                                <td class="text-muted">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <span class="text-white avatar" style="background-color: #d6336c">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-monument">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M8 18l2 -13l2 -2l2 2l2 13" />
-                                                    <path d="M5 21v-3h14v3" />
-                                                    <path d="M3 21l18 0" />
-                                                </svg>
-                                            </span>
-                                        </div>
-                                        <div class="col">
-                                            <div class="font-weight-medium">
-                                                History
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="text-muted">8</td>
-                                <td class="text-muted">23:59, 28 July 2024</td>
-                            </tr>
+                                    </td>
+                                    <td class="text-muted"><?= $hs->score ?></td>
+                                    <td class="text-muted"><?= $hs->date_taken ?></td>
+                                </tr>
+                            <?php } ?>
                         </table>
                     </div>
                 </div>
