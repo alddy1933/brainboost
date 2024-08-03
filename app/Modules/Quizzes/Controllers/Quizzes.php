@@ -5,8 +5,6 @@ namespace App\Modules\Quizzes\Controllers;
 use App\Modules\Category\Models\Category_model;
 use App\Modules\Events\Models\Events_model;
 use App\Modules\Quizzes\Models\Quizzes_model;
-use App\Modules\Profile\Models\Profile_model;
-use Exception;
 
 class Quizzes extends \App\Controllers\BaseController
 {
@@ -19,13 +17,11 @@ class Quizzes extends \App\Controllers\BaseController
         $this->model = new Quizzes_model();
         $this->category = new Category_model();
         $this->event = new Events_model();
-        $this->profile = new Profile_model();
     }
 
     public function index()
     {
         $data = [
-            'biodata' => $this->profile->getBiodata(session()->get('username')),
             "category" => $this->category->getAllCategory(),
             'event' => $this->event->getOnGoingEvent()
         ];
