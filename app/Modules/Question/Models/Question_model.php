@@ -24,11 +24,12 @@ class Question_model extends Model
             ->join('category c', 'a.category_id = c.category_id')
             ->select('a.question_id, a.content as question, b.answer_id, b.content as answer_option, a.img')
             ->where('c.slug', $category)
-            ->where('a.user_id !=', session()->get('user_id'))
-            ->whereNotIn('a.question_id', $question_ids)
-            ->get()
-            ->getResult();
+            ->where('a.user_id !=', session()->get('user_id'));
 
-        return $questions;
+        if (count($question_ids) > 0) {
+            $questions->whereNotIn('a.question_id', $question_ids);
+        }
+
+        return $questions->get()->getResult();
     }
 }
