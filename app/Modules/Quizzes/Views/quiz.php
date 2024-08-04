@@ -50,6 +50,11 @@
 <div id="generate-result" class="d-none">
     <h2 class="text-primary">Generating Result...</h2>
 </div>
+<div >
+    <audio id="audio" loop autoplay>
+        <source src="<?= base_url('media/quiz_music.mp3') ?>" type="audio/mp3">
+    </audio>
+</div>
 
 <?= $this->endSection(); ?>
 
@@ -73,6 +78,7 @@
             method: "POST",
             dataType: "json",
             success: (response) => {
+                console.log(response)
                 let formattedQuestions = response.reduce((acc, curr) => {
                     let {
                         question_id,
@@ -217,12 +223,16 @@
 <!-- Countdown timer -->
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
+        let au = document.getElementById("audio")
+        au.play()
         function startCountdown(duration, display) {
             var countdownInterval = setInterval(function() {
+                
                 var now = Math.floor(Date.now() / 1000);
                 var remainingTime = endTime - now;
 
                 if (remainingTime <= 0) {
+                    
                     clearInterval(countdownInterval);
                     display.textContent = "00:00";
                     generateResult()
