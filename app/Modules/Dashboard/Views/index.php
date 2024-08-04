@@ -144,7 +144,7 @@
                             <div class="col-2"></div>
                             <div class="col-8">
                                 <div class="d-flex flex-column justify-content-center align-items-center">
-                                    <h1><sup>#</sup><span style="font-size:50px;">2</span></h2>
+                                    <h1><sup>#</sup><span style="font-size:50px;"><?= $rank?></span></h2>
                                     <span>Current Rank</span>
                                 </div>
                             </div>

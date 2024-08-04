@@ -103,6 +103,9 @@
                 localStorage.setItem('questions', JSON.stringify(formattedQuestions));
 
                 getQuestion();
+            },
+            failure: function(response){
+                console.log(response)
             }
         });
     }

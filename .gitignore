@@ -131,3 +131,4 @@ brainboost.erd.json
 bbdb.sql
 public/img/avatar/*
 !public/img/avatar/default_profile.svg
+containerized/
